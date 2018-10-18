@@ -13,5 +13,6 @@ $RECYCLE.BIN/
 # Node.js
 node_modules/
 
-# project env settings
+# project settings
 env_settings.js
+project.config.json
