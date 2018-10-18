@@ -1,0 +1,32 @@
+<template name="search">
+
+<view class="sm_top" catchtouchmove="catchTouchStopMove">
+
+  <view class="search_display">
+    <form class="search_form" bindsubmit="bindSearch">
+      <text>包裹号</text>
+      <input class="search_input" name="parcel_num" value="{{search_display.input_pnum}}" bindinput="bindInput"/>
+      <text>运单号</text>
+      <input class="search_input" name="shpmt_num" value="{{search_display.input_snum}}"/>
+      <text>收件人</text>
+      <input class="search_input" name="rcpt" value="{{search_display.input_rcpt}}"/>
+      <text>包裹创建日期</text>
+      <view class="search_date_view">
+        <picker mode="date" id="search_start_date" value="{{date}}" start="{{search_display.min_date}}" end="{{search_display.max_date}}" bindchange="bindDateChange">
+          <image class="date_image" id="image_start_date" src="{{search_display.date_image_src}}" mode='aspectFit'></image>
+          <input class="search_date" value="{{search_display.start_date}}" name="start_time"/>
+        </picker>
+        <text class="search_date_t">-</text>
+        <picker mode="date" id="search_end_date" value="{{date}}" start="{{search_display.min_date}}" end="{{search_display.max_date}}" bindchange="bindDateChange">
+          <image class="date_image" id="image_end_date" src="{{search_display.date_image_src}}" mode='aspectFit'></image>
+          <input class="search_date" value="{{search_display.end_date}}" name="end_time"/>
+        </picker>
+      </view>
+      
+      <button class="search_btn" size="mini" formType="submit">搜索</button>
+    </form>
+  </view>
+
+</view>
+
+</template>

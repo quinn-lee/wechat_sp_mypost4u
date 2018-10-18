@@ -1,0 +1,44 @@
+<template name="screen">
+
+<view class="sm_top" catchtouchmove="catchTouchStopMove">
+
+  <view class="sm_display">
+    <text class="sm_text">创建日期</text>
+    <block wx:for="{{sm_display.con_date}}" wx:key="*this">
+      <button size="mini" class="sm_btn" catchtap="catchSmBtnTap" data-choose="{{sm_display.btn_disabled[index + sm_display.con_date_step]}}" id="{{index + sm_display.con_date_step}}" data-text="{{item}}">
+        <text class="sm_btn_text">{{item}}</text>
+      </button>
+    </block>
+
+    <text class="sm_text">物流产品</text>
+    <block wx:for="{{sm_display.con_logistics}}" wx:key="*this">
+      <button size="mini" class="sm_btn" catchtap="catchSmBtnTap" data-choose="{{sm_display.btn_disabled[index + sm_display.con_logistics_step]}}" id="{{index + sm_display.con_logistics_step}}" data-text="{{item}}">
+        <text class="sm_btn_text">{{item}}</text>
+      </button>
+    </block>
+
+    <text class="sm_text">支付状态</text>
+    <block wx:for="{{sm_display.con_payment}}" wx:key="*this">
+      <button size="mini" class="sm_btn" catchtap="catchSmBtnTap" data-choose="{{sm_display.btn_disabled[index + sm_display.con_payment_step]}}" id="{{index + sm_display.con_payment_step}}" data-text="{{item}}">
+        <text class="sm_btn_text">{{item}}</text>
+      </button>
+    </block>
+
+    <text class="sm_text">包裹拦截</text>
+    <block wx:for="{{sm_display.con_parcel_status}}" wx:key="*this">
+      <button size="mini" class="sm_btn" catchtap="catchSmBtnTap" data-choose="{{sm_display.btn_disabled[index + sm_display.con_parcel_status_step]}}" id="{{index + sm_display.con_parcel_status_step}}" data-text="{{item}}">
+        <text class="sm_btn_text">{{item}}</text>
+      </button>
+    </block>
+
+    <text class="sm_text">收件国</text>
+    <block wx:for="{{sm_display.con_rcpt_country}}" wx:key="*this">
+      <button size="mini" class="sm_btn" catchtap="catchSmBtnTap" data-choose="{{sm_display.btn_disabled[index + sm_display.con_rcpt_country_step]}}" id="{{index + sm_display.con_rcpt_country_step}}" data-text="{{item}}">
+        <text class="sm_btn_text">{{item}}</text>
+      </button>
+    </block>
+
+  </view>
+</view>
+
+</template>

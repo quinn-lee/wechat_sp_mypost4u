@@ -1,0 +1,79 @@
+<!--pages/parcels/index.wxml-->
+
+<import src="screen.wxml"/>
+<import src="search.wxml"/>
+
+<image class="to_top_image" src="{{page_display.to_top_image_src}}" mode='aspectFit' hidden="{{hidden_flag.to_top_png}}" catchtap="catchToTopTap"></image>
+
+<view hidden='{{hidden_flag.screen}}'>
+  <template is="screen" data="{{sm_display: sm_display}}"/>
+</view>
+
+<view hidden='{{hidden_flag.search}}'>
+  <template is="search" data="{{search_display: search_display}}"/>
+</view>
+
+<view class="container" catchtap="catchContainerTap" catchtouchmove="{{(hidden_flag.search==false || hidden_flag.screen==false) ? 'catchTouchStopMove':''}}">
+  <view class="title_view">
+    <image class="title_image" src="{{page_display.title_image_src}}" mode='aspectFit'></image>
+    <view>
+      <text class="title_t_1">包裹列表</text>
+      <text class="title_t_2">在此页面查看所有包裹</text>
+    </view>
+  </view>
+
+  <view class="search_view">
+    <form>
+      <view class="search_simple_view">
+        <image class="search_image" src="{{page_display.search_image_src}}"mode='aspectFit'></image>
+        <input class="search_simple_input" placeholder="{{page_display.search_simple_value}}" style="width: {{page_display.input_width}};" placeholder-class="input_holder" confirm-type="search" bindconfirm="bindSearch" value="{{simple_input_value}}"/>
+      </view>
+    </form>
+
+    <view class="search_more">
+      <image class="search_more_image" src="{{page_display.search_more_image_src}}"mode='aspectFit' catchtap="catchSearchMoreTap"></image>
+      <text catchtap="catchSearchMoreTap">更多搜索</text>
+      <image class="screen_image" src="{{page_display.screen_image_src}}"mode='aspectFit' catchtap="catchScreenTap"></image>      
+      <text catchtap="catchScreenTap">筛选</text>
+    </view>
+  </view>
+
+  <view class="parcels_view">
+    <block wx:for="{{parcels_data}}" wx:key="parcelNum">
+    <view class="parcel_info" bindtap="bindParcelInfoTap" id="{{item.parcelNum}}" hidden="{{item.isHidden}}">
+      <view class="parcel_info_1">
+        <text class="parcel_text">运单号</text> 
+        <text class="parcel_text_content">   {{item.shpmtNum}} </text>
+        <text class="parcel_text_paystatus {{item.isPay? '':'red_text'}}"> {{item.payStatus}}</text>
+      </view>
+      <view>
+        <text class="parcel_text">包裹号</text>  
+        <text class="parcel_text_content">    {{item.parcelNum}}</text> 
+      </view>
+      <view>
+        <text class="parcel_text">收件人</text>  
+        <text class="parcel_text_content">   {{item.rcpt}}</text> 
+      </view>
+      <view>
+        <text class="parcel_text">创建时间</text>  
+        <text class="parcel_text_content">   {{item.createTime}}</text> 
+      </view>
+      <view>
+        <text class="parcel_text">包裹状态</text>
+        <text class="parcel_text_content">    {{item.status}}</text> 
+      </view>
+      
+      <text class="parcel_text_content parcel_tracking">{{item.lastTracking}}</text> 
+
+      <view class="parcel_desc_view">
+        <image class="follow_image" src="{{item.isFollow? page_display.follow_image_src:page_display.no_follow_image_src}}" mode='aspectFit' data-id="{{index}}" catchtap="catchFollowTap" data-follow="{{item.isFollow}}" data-pnum="{{item.parcelNum}}"></image>
+        <text class="parcel_text_desc" data-id="{{index}}" catchtap="catchFollowTap" data-follow="{{item.isFollow}}" data-pnum="{{item.parcelNum}}">关注</text>
+        <block wx:if="{{item.hasFile}}">
+          <image class="download_image" catchtap="catchDownloadTap" data-pnum="{{item.parcelNum}}" data-can="{{item.hasFile}}" src="{{page_display.download_image_src}}" mode='aspectFit'></image>
+          <text class="parcel_text_desc" catchtap="catchDownloadTap" data-pnum="{{item.parcelNum}}" data-can="{{item.hasFile}}">下载包裹单</text>
+        </block>
+      </view>
+    </view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/parcels/index",
+    "pages/parcels/info",
+    "pages/auxiliary/valuation",
+    "pages/auxiliary/product_intr"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "EuropeTime",
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": "50px",
+    "enablePullDownRefresh": true
+  }
+}

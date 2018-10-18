@@ -1,0 +1,107 @@
+<!--pages/auxiliary/valuation.wxml-->
+<view class="container">
+  <view class="title_view">
+    <view class="title_view_1">
+      <image class="title_image" src="{{page_display.title_image_src}}" mode='aspectFit'></image>
+      <text class="title_t_1">价格计算</text>  
+    </view>
+    <view class="view_to_buy">
+      <text wx:if="{{page_display.buy_link_hidden==false}}" class="to_buy" catchtap="catchToBuyTap">购买</text>
+    </view>
+  </view>
+
+  <view class="exchange_rate_view">
+    <text>当天汇率 :  1{{page_display.page_currency}} = {{exchange_rate.rate}}{{page_display.page_to_currency}}</text>
+  </view>
+
+  <view class="search_view">
+    <form bindsubmit="searchFormSubmit">
+      <view class="between">
+        
+        <text class="search_t width_t">出发地 <text class="red_text">*</text></text>
+        <picker bindchange="pickerChange" value="{{page_display.sender_country_index}}" range="{{page_display.sender_country_arr}}" id="sender_country_picker" name="sender_country_index" disabled="{{page_display.sender_country_disabled}}" class="width_c {{page_display.sender_country_disabled==true? 'picker_disabled':''}}">
+          <view class="search_c picker_t">
+            {{page_display.sender_country_arr[page_display.sender_country_index]}}
+            <image wx:if="{{page_display.sender_country_disabled==false}}" class="pull_down_image" src="{{page_display.pull_down_image_src}}" mode='aspectFit'></image>
+          </view>
+        </picker>
+
+    
+        <text class="search_t width_t">目的地 <text class="red_text">*</text></text>
+        <picker bindchange="pickerChange" value="{{page_display.rcpt_country_index}}" range="{{page_display.rcpt_country_arr}}" id="rcpt_country_picker" name="rcpt_country_index" disabled="{{page_display.rcpt_country_disabled}}" class="width_c {{page_display.rcpt_country_disabled==true? 'picker_disabled':''}}">
+          <view class="search_c picker_t">
+            {{page_display.rcpt_country_arr[page_display.rcpt_country_index]}}
+            <image wx:if="{{page_display.rcpt_country_disabled==false}}" class="pull_down_image" src="{{page_display.pull_down_image_src}}" mode='aspectFit'></image>
+          </view>
+        </picker>
+      </view>
+      
+
+      <view class="between">
+        <text class="search_t width_t">长(cm)</text>
+        <view class="search_c t_to_v width_c">
+          <input class="input_c" type="digit" maxlength="8" name="length"/>
+        </view>
+        <text class="search_t width_t">宽(cm)</text>
+        <view class="search_c t_to_v width_c">
+          <input class="input_c" type="digit" maxlength="8" name="width"/>
+        </view>
+      </view>
+
+      <view class="between">
+        <text class="search_t width_t">高(cm)</text>
+        <view class="search_c t_to_v width_c">
+          <input class="input_c" type="digit" maxlength="8" name="height"/>
+        </view>
+        <text class="search_t width_t">重(kg) <text class="red_text">*</text> </text>
+        <view class="search_c t_to_v width_c">
+          <input class="input_c" type="digit" maxlength="8" name="weight" focus="{{page_display.weight_input_fouce}}"/>
+        </view>
+      </view>
+
+      <view class="between">
+        <text class="search_t width_t">运费 <text class="red_text">*</text></text>
+        <picker bindchange="pickerChange" value="{{page_display.currency_index}}" range="{{page_display.currency_arr}}" id="currency_picker" name="currency_index" class="width_c">
+          <view class="search_c picker_t">
+            {{page_display.currency_arr[page_display.currency_index]}}
+            <image class="pull_down_image" src="{{page_display.pull_down_image_src}}" mode='aspectFit'></image>
+          </view>
+        </picker>
+        <text class="search_t width_t"></text>
+        <text class="search_c t_to_v_no width_c"></text>
+      </view>
+
+      <view class="submit_view">
+        <image class="question_image" src="{{page_display.question_image_src}}" mode='aspectFit'></image>
+        <text class="question_t" catchtap="catchProductIntrTap">产品介绍</text>
+        <button class="submit_btn" size="mini" form-type="submit"><text>计价</text></button>
+      </view>
+    </form>
+  </view>
+
+
+  <view class="split_view">
+    <image class="split_image f_left" src="{{page_display.split_image_src}}" mode='aspectFit'></image>
+    <image class="split_image f_right" src="{{page_display.split_image_src}}" mode='aspectFit'></image>
+    <view class="split_line"></view>
+  </view>
+
+
+  <view class="result_view">
+    <view class="result_title_view">
+      <text class="result_t_t no_center width_30">邮寄路线</text>
+      <text class="result_t_t width_20">运费原价</text>
+      <text class="result_t_t width_20">活动价</text>
+      <text class="result_t_t width_30">税费</text>
+    </view>
+
+    <block wx:for="{{products_info}}" wx:key="*this">
+      <view class="result_content_view">
+        <text class="result_c_t no_center width_30">{{item.product_name}}</text>
+        <text class="result_c_t width_20 {{item.origin_price == item.price ? '' : 'strikethrough'}}">{{item.currency}} {{item.origin_price}}</text>
+        <text class="result_c_t width_20 {{item.origin_price == item.price ? '' : 'red_text'}}">{{item.currency}} {{item.price}}</text>
+        <text class="result_c_t width_30">{{item.tax_info}}</text>
+      </view>
+    </block>
+  </view>
+</view>

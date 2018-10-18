@@ -1,0 +1,16 @@
+/**app.wxss**/
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  width: 100%;
+} 
+
+.rest_filling_height{
+  min-height: 100vh;
+}

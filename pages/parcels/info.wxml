@@ -1,0 +1,212 @@
+<!--pages/parcels/info.wxml-->
+<view class="container">
+  <view class="parcel_base_info">
+    <view class="parcel_base_info_title">
+      <image class="info_image" src="{{page_display.info_image_src}}"mode='aspectFit'></image>
+      <text>包裹信息</text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">包裹号</text>
+      <text class="parcel_base_info_content"> {{parcel_info.parcelNum}} </text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">运单号</text>
+      <text class="parcel_base_info_content"> {{parcel_info.shpmtNum}} </text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">长 / 宽 / 高 / 重</text>
+      <text class="parcel_base_info_content"> {{parcel_info.length}}cm / {{parcel_info.width}}cm / {{parcel_info.height}}cm / {{parcel_info.weight}}kg</text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">包裹状态</text>
+      <text class="parcel_base_info_content"> {{parcel_add_info.status}} </text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">物流状态</text>
+      <text class="parcel_base_info_content"> {{parcel_add_info.shpmtStatus}} </text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">产品类型</text>
+      <text class="parcel_base_info_content"> {{parcel_info.product}} </text>
+    </view>
+    <view>
+      <text class="parcel_base_info_text">购买时Retour单号</text>
+      <text class="parcel_base_info_content"> {{parcel_info.retourNo}} </text>
+    </view>
+  </view>
+
+  <view class="parcel_detail_info">
+    <view class="parcel_detail_type">
+      <text class="parcel_detail_type_title border_left {{page_display.detail_title[0]==1 ? 'selected':''}}" id="0" catchtap="catchDetailTitleTap">收/寄件人</text>
+      <text class="parcel_detail_type_title {{page_display.detail_title[1]==1 ? 'selected':''}}" id="1" catchtap="catchDetailTitleTap">支付信息</text>
+      <text class="parcel_detail_type_title border_right {{page_display.detail_title[2]==1 ? 'selected':''}}" id="2" catchtap="catchDetailTitleTap">物品详情</text>
+    </view>
+
+    <view class="person_info" hidden="{{page_display.detail_title[0]==0}}">
+      <view class="sender_info">
+        <image class="d_arrow_image" id="showSenderArrow" src="{{page_display.arrow_image_src}}" mode='aspectFit' catchtap="catchDetailTitleTap">></image>
+        <text id="showSender" catchtap="catchDetailTitleTap">{{page_display.detail_title_1_desc}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">收件人</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.name}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">国家</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.country}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">省份</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.provine}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">城市</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.city}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">地址</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.address}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">身份证号</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.idnumber}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">邮编</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.postcode}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">电话</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.telephone}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">邮箱</text>
+        <text class="parcel_base_info_content">{{parcel_info.rcpt.email}}</text>
+      </view>
+
+      <view class="sender_detail_info" hidden="{{page_display.detail_title_1_sender==0}}">
+        <view>
+          <text class="parcel_base_info_text">寄件人</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.name}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">国家</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.country}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">省份</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.provine}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">城市</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.city}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">地址</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.address}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">身份证号</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.idnumber}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">邮编</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.postcode}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">电话</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.telephone}}</text>
+        </view>
+        <view>
+          <text class="parcel_base_info_text">邮箱</text>
+          <text class="parcel_base_info_content">{{parcel_info.sender.email}}</text>
+        </view>
+      </view> 
+    </view>
+
+    <view class="person_info" hidden="{{page_display.detail_title[1]==0}}">
+      <view>
+        <text class="parcel_base_info_text">支付状态</text>
+        <text class="parcel_base_info_content">{{parcel_add_info.payStatus}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">包裹价格</text>
+        <text class="parcel_base_info_content">{{parcel_info.currency}} {{parcel_info.price}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">支付单号</text>
+        <text class="parcel_base_info_content">{{parcel_info.pay_info.tx_num}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">支付金额</text>
+        <text class="parcel_base_info_content">{{parcel_info.pay_info.currency}} {{parcel_info.pay_info.amount}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">支付方式</text>
+        <text class="parcel_base_info_content">{{parcel_info.pay_info.payway}}</text>
+      </view>
+      <view>
+        <text class="parcel_base_info_text">支付时间</text>
+        <text class="parcel_base_info_content">{{parcel_info.pay_info.paytime}}</text>
+      </view>
+    </view>
+
+    <view class="person_info" hidden="{{page_display.detail_title[2]==0}}">
+      <view wx:for="{{parcel_info.item_info.infos}}" wx:key="*this"  catchtap="catchItemDetailTap" data-id="{{index}}" class="{{page_display.item_display_arr[index]==0 ? '' : 'item_view'}} {{index==0 ? 'item_view_first' : ''}} {{index==page_display.item_display_arr.length-1? 'item_view_last' : ''}}">
+        <view>
+          <text class="parcel_base_info_text">名称</text>
+          <text class="parcel_base_info_content">{{item.name}}</text>
+        </view>
+        
+        <view hidden="{{page_display.item_display_arr[index]==0}}">
+          <view>
+            <text class="parcel_base_info_text">类别</text>
+            <text class="parcel_base_info_content">{{item.goodsCategory}}</text>
+          </view>
+          <view>
+            <text class="parcel_base_info_text">数量</text>
+            <text class="parcel_base_info_content">*{{item.quantity}}</text>
+          </view>
+          <view>
+            <text class="parcel_base_info_text">单位净重(KG)</text>
+            <text class="parcel_base_info_content">{{item.netweightPerUnit}}</text>
+          </view>
+          <view>
+            <text class="parcel_base_info_text">物品单价(EUR)</text>
+            <text class="parcel_base_info_content">{{item.pricePerUnit}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="parcel_tracking_info">
+    
+    <view class="line_view" style="height: {{page_dislpay.tracking_dotted_line_length}}rpx"/>
+
+    <view class="tracking_rcpt_address"> 
+      <view class="tracking_image_view">
+        <image class="tracking_get_image" src="{{page_display.parcel_info.shpmtStatus=='已送达' ? page_display.tracking_get_image_src : page_display.tracking_unget_image_src}}"mode='aspectFit'></image>
+      </view>
+      <view class="tracking_info_float">
+        {{parcel_info.rcpt.address}}
+      </view>
+    </view>
+
+    <view class="tracking_info"  style="height: {{page_display.tracking_info_arr[index] * page_display.tracking_height_unit}}rpx;" wx:for="{{parcel_add_info.tracking_info}}" wx:key="info">
+      <view class="tracking_info_float"> 
+        <text class="tracking_info_info {{index==0 ? 'first_tracking_info':''}}">{{item.info}}</text>
+      </view>
+
+      <view class="tracking_dot_view">
+        <image wx:if="{{index==0}}" class="tracking_car_image" src="{{page_display.tracking_car_image_src}}"mode='aspectFit'>
+        </image>
+        <image wx:else class="tracking_dot_image" src="{{page_display.tracking_dot_image_src}}"mode='aspectFit'></image>
+      </view>
+
+      <text class="tracking_info_content date">{{item.date}}</text>
+      <text class="tracking_info_content time">{{item.time}}</text>
+    </view>
+  </view>
+
+</view>

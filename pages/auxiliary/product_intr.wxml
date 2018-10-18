@@ -1,0 +1,4 @@
+<!--pages/auxiliary/product_intr.wxml-->
+
+<web-view src="https://www.europe-time.cn/wechat/weixin/production_intr">产品介绍</web-view>
+

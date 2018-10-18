@@ -1,0 +1,146 @@
+/* pages/parcels/index.wxss */
+@import "screen_search.wxss";
+
+.red_text{
+  color: #DA4453;
+}
+.title_view{
+  height: 160rpx;
+  width: 100%;
+  display: flex;
+  align-items:center;
+  margin-bottom: 10rpx;
+}
+.title_image{
+  width: 120rpx;
+  height: 120rpx;
+  float: left;
+  margin-right: 30rpx;
+}
+
+.title_t_1{
+  font-size: 24px;
+  font-weight: bold;
+  color: #1C1A2A;
+  display: block;
+}
+
+.title_t_2{
+  font-size: 12px;
+  color: #838598;
+}
+
+.search_view{
+  width: 100%;
+  height: 100px;
+  border-bottom: 1px solid #eee;
+}
+
+.search_image{
+  float: left;
+  width: 20px;
+  height: 30px;
+  position: absolute;
+  padding-left: 5px;
+}
+.search_simple_input{
+  width: 90%;
+  margin-top: 20px;
+  padding: 5px 0px 5px 30px;
+  background: #EDEDED;
+  z-index: -1;
+  margin-bottom: 10px;
+}
+.input_holder{
+  color: #838598;
+  font-size: 14px;
+  z-index: 0;
+}
+
+.search_more{
+  margin-top: 10px;
+  margin-right: 20px;
+  width: 50%;
+  float: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+  color: #71777C;
+  font-size: 15px;
+}
+
+.search_more_image, .screen_image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+}
+.screen_image{
+  margin-left: 15px;
+}
+
+.parcels_view{
+  justify-content: flex-start;
+  height: 800rpx;
+  width: 96%;
+}
+.parcel_info{
+  border-bottom: 1px solid #eee;
+  padding: 10px 5px;
+}
+
+.parcel_info view{
+  width: 100%;
+  height: 40rpx;
+  margin-bottom: 20rpx;
+}
+
+.parcel_info text{
+  font-size: 16px;
+}
+
+.parcel_text{
+  color: #4A4A4A;
+}
+
+.parcel_text_content{
+  color: #1C1A2A;
+}
+
+.parcel_text_paystatus{
+  font-size: 16px;
+  float: right;
+}
+
+.parcel_tracking{
+  color: #3A6394;
+  font-size: 15px;
+}
+
+.parcel_desc_view{
+  margin-top: 30rpx;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items:center;
+}
+
+.parcel_desc_view image{
+  width: 38rpx;
+  height: 38rpx;
+  margin-right: 10rpx;
+}
+
+.parcel_text_desc{
+  font-size: 21px;
+  color: #5B5B5B;
+  margin-right: 10px;
+  float: right;
+}
+
+.to_top_image{
+  width: 50rpx;
+  height: 50rpx;
+  position: fixed;
+  top: 90%;
+  right: 10%;
+}
