@@ -66,20 +66,7 @@ Page({
     console.log("into onShow")
     //汇率使用 缓存机制
     var today = util_time.dateFtt("yyyy-MM-dd", new Date());
-    if (this.data.exchange_rate.rate=="" || this.data.exchange_rate.date != today){
-      var rate = wx.getStorageSync(today) || ""
-      if (rate != ""){
-        console.log("use wx.sync to get rate " + today + "=>"+rate)
-        this.setData({
-          "exchange_rate.data": today,
-          "exchange_rate.rate": rate 
-        })
-      }
-      else{
-        //调用接口并设置 缓存
-        util_interface.getLastExchangeRate(app.globalData, this, today, this.data.page_display.page_currency, this.data.page_display.page_to_currency)
-      }
-    }
+    util_interface.getLastExchangeRate(app.globalData, this, today, this.data.page_display.page_currency, this.data.page_display.page_to_currency)
   },
 
   /**

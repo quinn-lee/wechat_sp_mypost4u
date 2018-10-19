@@ -585,14 +585,7 @@ function getLastExchangeRate(global_info, page, date, currency, to_currency="CNY
     success: function (res) {
       if (res.data['status'] == 'succ') {
         page.setData({
-          "exchange_rate.data": date,
           "exchange_rate.rate": res.data['rate']
-        })
-
-        wx.clearStorageSync()
-        wx.setStorage({
-          key: date,
-          data: res.data['rate']
         })
       }
       else {
