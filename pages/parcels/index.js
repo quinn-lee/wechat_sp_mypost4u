@@ -18,6 +18,7 @@ Page({
       screen: true,
       conflict: false,
       to_top_png: true,
+      app_env: app.globalData.env,
     },
     page_display:{
       input_width: "",
@@ -386,6 +387,15 @@ Page({
     wx.pageScrollTo({
       scrollTop: 0,
       duration: 300
+    })
+  },
+
+  /**
+   * 测试环境使用 -- 跳转到计价界面
+   */
+  catchToCalcPriceTap: function(e){
+    wx.navigateTo({
+      url: '../auxiliary/valuation',
     })
   }
 })

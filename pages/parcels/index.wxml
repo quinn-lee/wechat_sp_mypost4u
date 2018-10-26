@@ -20,6 +20,8 @@
       <text class="title_t_1">包裹列表</text>
       <text class="title_t_2">在此页面查看所有包裹</text>
     </view>
+    
+    <text wx:if="{{hidden_flag.app_env=='test'}}" class="test_use float_right" catchtap="catchToCalcPriceTap">计价</text>
   </view>
 
   <view class="search_view">

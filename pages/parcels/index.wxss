@@ -144,3 +144,12 @@
   top: 90%;
   right: 5%;
 }
+
+.test_use{
+  margin-left: 50rpx;
+  font-size: 14px;
+  color: crimson;
+}
+.float_right{
+  float: right;
+}
