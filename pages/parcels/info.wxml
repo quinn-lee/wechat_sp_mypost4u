@@ -6,11 +6,11 @@
       <text>包裹信息</text>
     </view>
     <view>
-      <text class="parcel_base_info_text">包裹号</text>
+      <text class="parcel_base_info_text">包裹编号</text>
       <text class="parcel_base_info_content"> {{parcel_info.parcelNum}} </text>
     </view>
     <view>
-      <text class="parcel_base_info_text">运单号</text>
+      <text class="parcel_base_info_text">国际物流号</text>
       <text class="parcel_base_info_content"> {{parcel_info.shpmtNum}} </text>
     </view>
     <view>
@@ -30,7 +30,7 @@
       <text class="parcel_base_info_content"> {{parcel_info.product}} </text>
     </view>
     <view>
-      <text class="parcel_base_info_text">购买时Retour单号</text>
+      <text class="parcel_base_info_text">购买时德国境内单号</text>
       <text class="parcel_base_info_content"> {{parcel_info.retourNo}} </text>
     </view>
   </view>

@@ -51,7 +51,7 @@ Page({
       })
       return
     }
-    // 设置最重要的包裹号
+    // 设置最重要的包裹编号
     this.setData({
       "parcel_info.parcelNum": options.pnum
     })

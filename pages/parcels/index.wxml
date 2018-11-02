@@ -44,12 +44,12 @@
     <block wx:for="{{parcels_data}}" wx:key="parcelNum">
     <view class="parcel_info" bindtap="bindParcelInfoTap" id="{{item.parcelNum}}" hidden="{{item.isHidden}}">
       <view class="parcel_info_1">
-        <text class="parcel_text">运单号</text> 
+        <text class="parcel_text">国际物流号</text> 
         <text class="parcel_text_content">   {{item.shpmtNum}} </text>
         <text class="parcel_text_paystatus {{item.isPay? '':'red_text'}}"> {{item.payStatus}}</text>
       </view>
       <view>
-        <text class="parcel_text">包裹号</text>  
+        <text class="parcel_text">包裹编号</text>  
         <text class="parcel_text_content">    {{item.parcelNum}}</text> 
       </view>
       <view>
