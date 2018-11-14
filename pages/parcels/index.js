@@ -79,7 +79,7 @@ Page({
     }
     else {
       console.log("async callback uid")
-      app.signInReadyCallback = res => {
+      app.signInParcelsCallback = res => {
         this.setData({
           parcels_data: res.parcels_data,
           parcels_num: res.parcels_num,

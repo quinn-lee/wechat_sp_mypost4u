@@ -14,11 +14,23 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+/**
+ * 两日期相减
+ */
 function getDateDiff(startDate, endDate) {
   var startTime = new Date(startDate).getTime();
   var endTime = new Date(endDate).getTime();
   var dates = Math.abs((startTime - endTime)) / (1000 * 60 * 60 * 24);
   return dates;
+}
+
+/**
+ * 日期增加/减少 天数
+ */
+function getDateStep(date, step) {
+  var new_date = new Date(date)
+  new_date.setDate(date.getDate() + step)
+  return dateFtt("yyyy-MM-dd", new_date);
 }
 
 function dateFtt(fmt, date) { //author: meizz   
@@ -47,5 +59,6 @@ module.exports = {
   formatTime: formatTime,
   dateFtt: dateFtt,
   getDateDiff: getDateDiff,
-  getLength: getLength
+  getLength: getLength,
+  getDateStep: getDateStep
 }

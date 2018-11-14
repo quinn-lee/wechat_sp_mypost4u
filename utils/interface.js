@@ -7,7 +7,7 @@ function getWebDomain(env){
 
 
 //用户登入, 并获取用户 积分,签到 等信息
-function userLogin(global_info, code, app){
+function userLogin(global_info, code, app, add_type){
   var show_flag=0
   wx.showLoading({
     title: "处理中",
@@ -24,7 +24,7 @@ function userLogin(global_info, code, app){
     data: {
       code: code,
       type: global_info.id_type,
-      additional: 'parcels'
+      additional: add_type
     },
     header: {
       'content-type': 'application/json',
@@ -37,12 +37,23 @@ function userLogin(global_info, code, app){
           console.log("登入提示:"+res.data['msg'])
         global_info.uid = res.data['uid']
         console.log('userLogin 登录成功:' + global_info.uid)
-        console.log(res.data.add_info.parcels_data)
-        console.log("total_page: "+ res.data.add_info.parcels_num)
 
-        global_info.initParcels = res.data.add_info
-        if (app.signInReadyCallback) {
-          app.signInReadyCallback(res.data.add_info)
+        if (add_type == "parcels") {
+          console.log(res.data.add_info.parcels_data)
+          console.log("total_page: "+ res.data.add_info.parcels_num)
+          global_info.initParcels = res.data.add_info
+
+          if (app.signInParcelsCallback) {
+            app.signInParcelsCallback(res.data.add_info)
+          }
+        }
+        else if(add_type=="payments"){
+          console.log(res.data)
+          global_info.initPayments = res.data.add_info
+
+          if (app.signInPaymentsCallback) {
+            app.signInPaymentsCallback(res.data.add_info)
+          }
         }
       }
       else {
@@ -669,6 +680,96 @@ function getValuation(global_info, page, form) {
   })
 }
 
+/**
+ * 查询支付列表
+ */
+function getPaymentList(global_info, page, form, search_type){
+  console.log("getPaymentList start")
+  
+  var show_flag = 0
+  wx.showLoading({
+    title: "检索中",
+    mask: true
+  })
+  show_flag += 1
+
+  var r_page = 1
+  var r_total_num = page.data.payments_data.total_num
+  if (search_type == "onReachBottom") {
+    // 下拉查询, 页数变化
+    r_page = page.data.payments_data.current_page + 1
+  }
+  else {
+    // 按钮查询,传入total_num为0,以进行 汇总值的计算
+    r_total_num = 0
+  }
+
+  var url = getWebDomain(global_info.env)
+  url += "/wechat/s_program/payment_list"
+  console.log(url)
+
+  console.log(form)
+  wx.request({
+    url: url,
+    method: "POST",
+    data: {
+      tx_num: form.tx_num,
+      pmnt_meth_desc: form.pmnt_meth, 
+      pmnt_type_desc: form.pmnt_type,
+      paid_at_beg: form.start_date,
+      paid_at_end: form.end_date,
+      pnum: form.pnum,
+      page: r_page,
+      total_num: r_total_num
+    },
+    header: {
+      'content-type': 'application/json',
+      'content-env': global_info.env,
+      'content-uid': global_info.uid
+    },
+    dataType: "json",
+    success: function (res) {
+      console.log(res)
+      if (res.data['status'] == 'succ') {
+        var payment_list = page.data.payments_data.list
+        if (search_type == "onReachBottom") {
+          payment_list = payment_list.concat(res.data.add_info.payment_list)
+        }
+        else{
+          payment_list = res.data.add_info.payment_list
+        }
+        page.setData({
+          "payments_data.list": payment_list,
+          "payments_data.total_num": res.data.add_info.total_num,
+          "payments_data.payments_num": res.data.add_info.payments_num,
+          "payments_data.current_page": r_page,
+          dyn_var: {}
+        })
+        if (res.data.add_info.summary_hash.calc == true){
+          page.setData({
+            "payments_data.summary_hash": res.data.add_info.summary_hash,
+          })
+        }
+      }
+      else {
+        util_handle.showFailToast("检索异常,请稍后重试", 2000)
+        show_flag -= 1
+      }
+    },
+    fail: function (res) {
+      console.log("getValuation request.fail:")
+      console.log(res)
+      util_handle.showFailToast("检索异常,请稍后重试", 2000)
+      show_flag -= 1
+    },
+    complete: function (res) {
+      if (show_flag >= 1)
+        wx.hideLoading()
+    }
+  })
+
+}
+
 module.exports = {
   userLogin: userLogin,
   download: download,
@@ -679,5 +780,6 @@ module.exports = {
   parcelInfo: parcelInfo,
   parcelTrackingInfo: parcelTrackingInfo,
   getLastExchangeRate: getLastExchangeRate,
-  getValuation: getValuation
+  getValuation: getValuation,
+  getPaymentList: getPaymentList
 }
