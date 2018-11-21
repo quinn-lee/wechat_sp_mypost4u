@@ -13,72 +13,94 @@
 
   <view class="search_view">
     <form class="search_form" bindsubmit="bindSearch">
-      <input class="search_input" name="pnum" value="{{search_form.input_pnum}}" placeholder='包裹编号'/>
-      <input class="search_input" name="tx_num" value="{{search_form.input_tx_num}}" placeholder='支付单号'/>
+      <input class="search_input" name="pnum" value="{{search_form.input_pnum}}" placeholder='包裹编号' maxlength='30'/>
+      <input class="search_input" name="tx_num" value="{{search_form.input_tx_num}}" placeholder='支付单号' maxlength='30'/>
       
-      <view class="search_picker_view">
-        <picker range="{{page_display.pmnt_meth_arr}}" id="pmnt_meth_picker" name="pmnt_meth" bindchange="bindPickerChange" >
-           <input class="search_input"  placeholder="支付方式" value="{{search_form.pmnt_meth}}"/>
-        </picker>
-        <picker range="{{page_display.pmnt_type_arr}}" id="pmnt_type_picker" name="pmnt_type" bindchange="bindPickerChange">
-           <input class="search_input" placeholder="支付类型" value="{{search_form.pmnt_type}}"/>
-        </picker>
-      </view>
+      <picker range="{{page_display.pmnt_meth_arr}}" id="pmnt_meth_picker" name="pmnt_meth" bindchange="bindPickerChange" >
+        <view class="relative_view">
+          <input class="search_input"  placeholder="支付方式" value="{{search_form.pmnt_meth}}" disabled="{{true}}"/>
+          <image class="pull_down_image" src="{{page_display.pull_down_image_src}}" mode='aspectFit'></image>
+        </view>
+      </picker>
+      <picker range="{{page_display.pmnt_type_arr}}" id="pmnt_type_picker" name="pmnt_type" bindchange="bindPickerChange">
+        <view class="relative_view">
+          <input class="search_input" placeholder="支付类型" value="{{search_form.pmnt_type}}" disabled="{{true}}"/>
+          <image class="pull_down_image" src="{{page_display.pull_down_image_src}}" mode='aspectFit'></image>
+        </view>
+      </picker>
 
-      <view class="search_date_view">
+      <view class="search_date_view relative_view">
+        <image class="date_image" src="{{page_display.date_image_src}}" mode='aspectFit'></image>
         <picker mode="date" id="search_start_date" start="{{page_display.min_date}}" end="{{page_display.max_date}}" bindchange="bindPickerChange" value="{{search_form.start_date}}">
-          <image class="date_image" id="image_start_date" src="{{page_display.date_image_src}}" mode='aspectFit'></image>
-          <input class="search_date" value="{{search_form.start_date}}" name="start_date" placeholder='查询起期'/>
+          <input class="search_date" value="{{search_form.start_date}}" name="start_date" placeholder='查询起期' disabled="{{true}}"/>
         </picker>
         <text class="search_date_t">-</text>
         <picker mode="date" id="search_end_date"start="{{page_display.min_date}}" end="{{page_display.max_date}}" bindchange="bindPickerChange">
-          <image class="date_image" id="image_end_date" src="{{page_display.date_image_src}}" mode='aspectFit'></image>
-          <input class="search_date" value="{{search_form.end_date}}" name="end_date" placeholder='查询终期'/>
+          <input class="search_date" value="{{search_form.end_date}}" name="end_date" placeholder='查询终期' disabled="{{true}}"/>
         </picker>
       </view>
     
-      <button class="search_btn" size="mini" formType="submit">搜索</button>
+      <button class="search_btn" size="mini" formType="submit">查 询</button>
     </form>
   </view>
   
+  
   <view class="summary_view" wx:if="{{payments_data.total_num>0}}">
-    <text>总比数</text> 
-    <text>{{payments_data.total_num}}</text>
     <view>
       <text>总支出</text>
-      <text>€{{payments_data.summary_hash['EUR']}}</text>
-      <text>+</text>
-      <text>¥{{payments_data.summary_hash['CNY']}}</text>
+      <text class=" black_text">€{{payments_data.summary_hash['EUR']}} + ¥{{payments_data.summary_hash['CNY']}}</text>
     </view>
     <view>
       <text>总使用积分</text>
-      <text>{{payments_data.summary_hash['use_credit']}}</text>
+      <text class=" black_text">{{payments_data.summary_hash['use_credit']}}</text>
+    </view>
+    <view>
       <text>总赠送积分</text>
-      <text>{{payments_data.summary_hash['add_credit']}}</text>
+      <text class=" black_text">{{payments_data.summary_hash['add_credit']}}</text>
+    </view>
+    <view>
+      <text>已支付订单数</text>
+      <text>x{{payments_data.total_num}}</text>
     </view>
   </view>
   <view class="payments_view">
     <block wx:for="{{payments_data.list}}" wx:key="tx_num">
     <view class="payment_info">
       <view class="payment_info_1">
-        <text class="payment_text_content left_content">   {{item.tx_num}} </text>
-        <text class="payment_text_content">{{item.currency}}{{item.amount}}</text> 
+        <text class="black_text">   {{item.tx_num}} </text>
+        <text class="black_text ">{{item.currency}}{{item.amount}}</text> 
       </view>
-      <view> 
-        <text class="payment_text_content left_content">{{item.paid_at}}</text> 
-        <text class="payment_text_content">{{item.pmnt_meth}}</text> 
+      <view class="payment_info_1"> 
+        <text>{{item.pmnt_meth}}</text> 
+        <text>{{item.paid_at}}</text> 
       </view>
-      <view> 
-        <text class="payment_text_content left_content">{{item.pmnt_type}} , 赠送积分 {{item.add_credit}}</text>
-        <text class="payment_text_content" catchtap="catchRetNumTap" data-id="arrow_{{index}}">相关包裹 </text>
-        <image class="d_arrow_image" src="{{page_display.arrow_image_src}}" mode='aspectFit' catchtap="catchRetNumTap" data-id="arrow_{{index}}"></image>
+      <view class="payment_info_1"> 
+        <text>{{item.pmnt_type}} , 赠送积分 {{item.add_credit}}</text>
+        
+        <image class="d_arrow_image" src="{{item.part_flag ? page_display.down_arrow_image_src : page_display.up_arrow_image_src}}" mode='aspectFit' catchtap="catchRetNumTap" data-id="{{index}}"></image>
       </view>
-      <view class="payment_hidden_view {{item.pmnt_type==page_display.type_link? 'blue_view':''}}" hidden="{{dyn_var['arrow_'+index]!=false}}" style="height: {{item.ret_nums.length/2*40}}rpx;" >
-        <block wx:for="{{item.ret_nums}}" wx:key="*this" wx:for-item="pnum">
-          <text wx:if="{{index%2==1}}"> | </text>
-          <text class="payment_middle_content" catchtap="catchPnumTap" data-pmnt_type="{{item.pmnt_type}}" data-pnum="{{pnum}}">{{pnum}}</text>
+
+      <view class="{{item.part_flag ? '':'hidd_view'}}">
+      <view class="small_interval {{item.pmnt_type==page_display.type_link? 'blue_view':''}}" hidden="{{item.part_flag}}" >
+        <view class="payment_info_1 small_interval" wx:for="{{item.ret_nums_part}}" wx:key="*this" wx:for-item="pnum">
+          <text class="black_text" catchtap="catchPnumTap" data-pmnt_type="{{item.pmnt_type}}" data-pnum="{{pnum}}">{{pnum[0]}}</text>
+          <text class="black_text">{{pnum[1]}}</text>
+        </view>
+      </view>
+
+      <view wx:if="{{item.ret_nums.length>0  && item.part_flag == false}}" class="{{item.pmnt_type==page_display.type_link? 'blue_view':''}}" >
+        <block wx:if="{{item.all_flag}}" >
+          <text class="payment_info_2" catchtap="catchDisplayAllTap" data-id="{{index}}">[展开全部]</text>
+        </block>
+        <block wx:else>
+          <view class="payment_info_1 small_interval" wx:for="{{item.ret_nums}}" wx:key="*this" wx:for-item="pnum">
+          <text class="black_text" catchtap="catchPnumTap" data-pmnt_type="{{item.pmnt_type}}" data-pnum="{{pnum}}">{{pnum[0]}}</text>
+          <text class="black_text">{{pnum[1]}}</text>
+          </view>
         </block>
       </view>
+      </view>
+
     </view>
     </block>
   </view>

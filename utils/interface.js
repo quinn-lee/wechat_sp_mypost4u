@@ -742,8 +742,7 @@ function getPaymentList(global_info, page, form, search_type){
           "payments_data.list": payment_list,
           "payments_data.total_num": res.data.add_info.total_num,
           "payments_data.payments_num": res.data.add_info.payments_num,
-          "payments_data.current_page": r_page,
-          dyn_var: {}
+          "payments_data.current_page": r_page
         })
         if (res.data.add_info.summary_hash.calc == true){
           page.setData({

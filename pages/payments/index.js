@@ -14,10 +14,12 @@ Page({
    */
   data: {
     page_display: {
-      title_image_src: "../../resources/title_icon.png",
-      date_image_src: "../../resources/date.png",
-      arrow_image_src: "../../resources/down_arrow.png",
+      title_image_src: "../../resources/payment/title.png",
+      date_image_src: "../../resources/payment/date.png",
+      up_arrow_image_src: "../../resources/payment/up_arrow.png",
+      down_arrow_image_src: "../../resources/payment/down_arrow.png",
       to_top_image_src: "../../resources/to_top.png",
+      pull_down_image_src: "../../resources/auxiliary/pull_down.png",
       min_date: "2015-01-01",
       max_date: util_time.dateFtt("yyyy-MM-dd", today),
       pmnt_meth_arr: ["全部", "手机微信支付", "Paypal", "积分支付", "Sofort", "微信支付", "国际支付宝", "支付宝", "银联支付"],
@@ -41,8 +43,7 @@ Page({
       payments_num: 0,
       current_page: 1,
       summary_hash: {}
-    },
-    dyn_var:{}
+    }
   },
 
   /**
@@ -218,14 +219,20 @@ Page({
    * 相关包裹 显示箭头 点击事件
    */
   catchRetNumTap: function(e) {
-    var var_name = "dyn_var." + e.currentTarget.dataset.id
-    var var_value = this.data.dyn_var[e.currentTarget.dataset.id]
-    if (typeof (var_value) == "undefined"){
-      var_value = true
-    }
-
+    var var_name = "payments_data.list["+e.currentTarget.dataset.id+"].part_flag"
     this.setData({
-      [var_name]: !var_value
+      [var_name]: !this.data.payments_data.list[e.currentTarget.dataset.id].part_flag
+    })
+  },
+
+
+  /***
+   * 相关包裹 显示所有
+   */
+  catchDisplayAllTap: function (e) {
+    var var_name = "payments_data.list[" + e.currentTarget.dataset.id + "].all_flag"
+    this.setData({
+      [var_name]: !this.data.payments_data.list[e.currentTarget.dataset.id].all_flag
     })
   },
 

@@ -1,14 +1,29 @@
 /* pages/payments/index.wxss */
 
 .blue_view text, .blue_text{
-  color:#66ccff;
+  color:#3366FF !important;
 }
+.black_text{
+  color: #1C1A2A !important;
+}
+.text_right{
+  text-align: right;
+}
+.text_left{
+  text-align: left;
+}
+.relative_view{
+  position: relative;
+}
+
 
 .title_view{
   height: 160rpx;
   width: 100%;
+  padding-left: 50rpx;
   display: flex;
-  align-items:center;
+  justify-content: flex-start;
+  align-items: center;
   margin-bottom: 10rpx;
 }
 .title_image{
@@ -25,83 +40,71 @@
   display: block;
 }
 .title_t_2{
-  font-size: 12px;
+  font-size: 13px;
   color: #838598;
 }
 
 
 .search_view{
-  width: 100%;
-  height: 360rpx;
-  border-bottom: 1px solid #eee;
+  height: 500rpx;
+  margin: 0rpx 30rpx;
 }
 
-.search_form text{
-  font-size: 16px;
-  color: #71777C;
-}
 .search_form input{
-  padding-left: 10rpx;
+  padding-left: 20rpx;
   font-size: 16px;
   height: 60rpx;
+  border-radius: 4px;
 }
+
 .search_input, .search_date{
-  border: 1px solid #B8BFC1; 
+  border: 1px solid #AFAFAF; 
   margin-bottom: 20rpx;
 }
 
-.search_picker_view{
-  display: flex;
-  justify-content: space-between;
-}
-
-.search_picker_view picker{
-  width: 46%;
-}
-
-.search_btn{
-  float: right;
-  background-image: linear-gradient(#FCDF48, #F78F1C);
-  border-radius: 4px;
-  width: 130rpx;
-}
-.search_btn::after{
-  border-radius: 4px;
-  border: none;
+.pull_down_image{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  right: 3%;
+  top: 25%;
 }
 
 .search_date_view{
-  vertical-align: middle;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.date_image{
+  position: absolute;
+  left: 0%;
+  top: 4%;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .search_date_view input{
-  padding-left: 58rpx;
+  padding-left: 20rpx;
   font-size: 15px;
 }
 
 #search_start_date{
-  float: left;
-  width: 32%;
+  width: 42%;
 }
 
 #search_end_date{
-  float: left;
-  width: 32%;
-}
-.search_date_t{
-  width: 4%;
-  float: left;
-  text-align: center;
-  vertical-align: middle;
-  margin: 0rpx 10rpx;
-  height: 50rpx;
+  width: 42%;
 }
 
-.date_image{
-  width: 40rpx;
-  height: 50rpx;
-  float: right;
+.search_date_t{
+  width: 4%;
+  text-align: center;
+  vertical-align: middle;
+  margin-top: -25rpx;
+  color: #777777;
 }
+
 
 #image_start_date{
   position: absolute;
@@ -113,64 +116,93 @@
   margin: 8rpx 0rpx 0rpx 10rpx;
 }
 
+.search_btn{
+  float: right;
+  background-image: linear-gradient(#FCDF48, #F78F1C);
+  width: 26%;
+  height: 60rpx;
+  color: #FFFFFF;
+}
+.search_btn::after{
+  border-radius: 4px;
+  border: none;
+}
+
+
 
 .summary_view{
-  padding: 10rpx 0rpx 20rpx 40rpx;
-  width: 96%;
-  border-bottom: 1px solid #eee;
+  border-top: 10rpx solid #eee;
+  width: 100%;
+  border-bottom: 10rpx solid #eee;
+  color: #777777;
+  padding: 10rpx 0rpx;
+  margin-bottom: 10rpx;
 }
+.summary_view view{
+  padding: 10rpx 30rpx 10rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
 .summary_view text{
   font-size: 14px;
-  display: inline-block;
-  width: 25%;
 }
 
 
 .payments_view{
   justify-content: flex-start;
-  width: 96%;
+  width: 100%;
 }
 
 .payment_info{
-  padding: 10px 5px;
+  padding: 10rpx 30rpx 10rpx 30rpx;
   border-bottom: 1px solid #eee;
 }
 
-
 .payment_info view{
   width: 100%;
-  height: 40rpx;
   margin-bottom: 20rpx;
 }
 
 .payment_info text{
   font-size: 16px;
+  color: #777777;
 }
 
-.payment_text{
-  color: #4A4A4A;
+
+.payment_info_1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.payment_text_content{
-  color: #1C1A2A;
-}
-
-.left_content{
-  width: 70%;
-  display: inline-block;
-}
 
 .d_arrow_image{
-  width: 20rpx;
-  height: 20rpx;
-  margin-left: 10rpx;
+  width: 40rpx;
+  height: 40rpx;
 }
 
-.payment_middle_content{
-  font-size: 13px !important;
-  width: 48%;
-  display: inline-block;
+.hidd_view{
+  padding: 10rpx ;
+  background-color: #E6F1F0;
 }
+
+.small_interval{
+  margin: 0rpx !important;
+  padding: 0rpx !important;
+}
+.small_interval text{
+  font-size: 14px;
+}
+
+.payment_info_2 {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 14px !important;
+}
+
+
 
 .to_top_image{
   width: 50rpx;

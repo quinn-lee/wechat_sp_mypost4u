@@ -50,6 +50,7 @@
   background: #EDEDED;
   z-index: -1;
   margin-bottom: 10px;
+  border-radius: 4px;
 }
 .input_holder{
   color: #838598;

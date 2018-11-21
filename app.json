@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/payments/index",
     "pages/parcels/index",
     "pages/parcels/info",
+    "pages/payments/index",
     "pages/auxiliary/valuation",
     "pages/auxiliary/product_intr"
   ],
