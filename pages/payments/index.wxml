@@ -45,7 +45,7 @@
   </view>
   
   
-  <view class="summary_view" wx:if="{{payments_data.total_num>0}}">
+  <view class="summary_view">
     <view>
       <text>总支出</text>
       <text class=" black_text">€{{payments_data.summary_hash['EUR']}} + ¥{{payments_data.summary_hash['CNY']}}</text>
@@ -83,7 +83,7 @@
       <view class="{{item.part_flag ? '':'hidd_view'}}">
       <view class="small_interval {{item.pmnt_type==page_display.type_link? 'blue_view':''}}" hidden="{{item.part_flag}}" >
         <view class="payment_info_1 small_interval" wx:for="{{item.ret_nums_part}}" wx:key="*this" wx:for-item="pnum">
-          <text class="black_text" catchtap="catchPnumTap" data-pmnt_type="{{item.pmnt_type}}" data-pnum="{{pnum}}">{{pnum[0]}}</text>
+          <text class="black_text" catchtap="catchPnumTap" data-pmnt_type="{{item.pmnt_type}}" data-pnum="{{pnum[0]}}">{{pnum[0]}}</text>
           <text class="black_text">{{pnum[1]}}</text>
         </view>
       </view>

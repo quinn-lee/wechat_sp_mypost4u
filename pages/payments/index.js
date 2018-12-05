@@ -23,7 +23,7 @@ Page({
       min_date: "2015-01-01",
       max_date: util_time.dateFtt("yyyy-MM-dd", today),
       pmnt_meth_arr: ["全部", "手机微信支付", "Paypal", "积分支付", "Sofort", "微信支付", "国际支付宝", "支付宝", "银联支付"],
-      pmnt_type_arr: ["全部", "运单", "补款", "milkvip", "retour单", "包装材料订单"],
+      pmnt_type_arr: ["全部", "运单", "补款", "会员升级", "retour单", "包装材料订单"],
       type_link: "运单",
       mobile_height: 666.66,
       mobile_width: 500.11,
@@ -33,7 +33,7 @@ Page({
       pnum: '',
       tx_num: '',
       start_date: util_time.getDateStep(today,-30),
-      end_date: '',
+      end_date: util_time.dateFtt("yyyy-MM-dd", today),
       pmnt_meth: '',
       pmnt_type: '',
     },
@@ -189,10 +189,31 @@ Page({
     console.log(e)
     var var_name = ""
     var var_value = e.detail.value
-    if (e.target.id == "search_end_date")
+    // 只能进行3个月-90天数据统计
+    if (e.target.id == "search_end_date"){
       var_name = "search_form.end_date"
-    else if (e.target.id == "search_start_date")
+
+      var beg_value = this.data.search_form.start_date
+      var allow_value = util_time.getDateStep(new Date(var_value), -90)
+      console.log(allow_value + "<->"+ beg_value)
+      if (new Date(beg_value) < new Date(allow_value)){
+        this.setData({
+          "search_form.start_date": allow_value
+        })
+      }
+    }
+    else if (e.target.id == "search_start_date"){
       var_name = "search_form.start_date"
+
+      var end_value = this.data.search_form.end_date
+      var allow_value = util_time.getDateStep(new Date(var_value), 90)
+      console.log(allow_value + "<->" + end_value)
+      if (new Date(end_value) > new Date(allow_value)) {
+        this.setData({
+          "search_form.end_date": allow_value
+        })
+      }
+    }
     else if (e.target.id == "pmnt_meth_picker") {
       var_name = "search_form.pmnt_meth"
       if (e.detail.value == 0)
