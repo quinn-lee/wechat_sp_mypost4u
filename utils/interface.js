@@ -2,7 +2,7 @@ const util_handle = require('handle.js');
 const util_time = require('time.js');
 
 function getWebDomain(env){
-  return env == "production" ? "https://www.europe-time.cn" : "https://www.world-paket.de";
+  return env == "production" ? "https://www.europe-time.cn" : "https://www.world-paket.de:444";
 }
 
 

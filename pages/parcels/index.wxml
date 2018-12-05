@@ -53,6 +53,10 @@
         <text class="parcel_text_content">    {{item.parcelNum}}</text> 
       </view>
       <view>
+        <text class="parcel_text">包裹产品</text> 
+        <text class="parcel_text_content"> {{item.product}}</text>
+      </view>
+      <view>
         <text class="parcel_text">收件人</text>  
         <text class="parcel_text_content">   {{item.rcpt}}</text> 
       </view>
