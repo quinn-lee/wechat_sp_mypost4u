@@ -88,6 +88,13 @@
 
 
   <view class="result_view">
+    <view class="result_remark" wx:if="{{products_remark!=''}}">
+      <text><text class="red_text">*</text>表示: </text>
+      <block wx:for="{{products_remark}}" wx:key="*this">
+        <text wx:if="{{index>0}}"> ; </text>
+        <text>{{item}}</text>
+      </block>
+    </view>
     <view class="result_title_view">
       <text class="result_t_t no_center width_30">邮寄路线</text>
       <text class="result_t_t width_20">运费原价</text>
@@ -97,7 +104,7 @@
 
     <block wx:for="{{products_info}}" wx:key="*this">
       <view class="result_content_view">
-        <text class="result_c_t no_center width_30">{{item.product_name}}</text>
+        <text class="result_c_t no_center width_30">{{item.product_name}} <text class="red_text" wx:if="{{item.remark}}"> *</text></text>
         <text class="result_c_t width_20 {{item.origin_price == item.price ? '' : 'strikethrough'}}">{{item.currency}} {{item.origin_price}}</text>
         <text class="result_c_t width_20 {{item.origin_price == item.price ? '' : 'red_text'}}">{{item.currency}} {{item.price}}</text>
         <text class="result_c_t width_30">{{item.tax_info}}</text>

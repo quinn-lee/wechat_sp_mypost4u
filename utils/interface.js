@@ -657,7 +657,8 @@ function getValuation(global_info, page, form) {
     success: function (res) {
       if (res.data['status'] == 'succ') {
         page.setData({
-          products_info: res.data["price_arr"]
+          products_info: res.data["price_arr"],
+          products_remark: res.data["remark"]
         })
 
         console.log(page.data.products_info)

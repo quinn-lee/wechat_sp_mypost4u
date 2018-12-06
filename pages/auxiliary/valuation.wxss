@@ -160,6 +160,11 @@
   width: 96%;
 }
 
+.result_remark{
+  font-size: 14px;
+  margin-bottom: 40rpx;
+}
+
 .result_title_view, .result_content_view{
   width: 100%;
   display: flex;
