@@ -39,7 +39,7 @@ Page({
       con_date_step: 0,
       con_date: ["三天内", "一周内", "一月内"],
       con_logistics_step: 3,
-      con_logistics: ["奶粉专线", "阳光包税", "DHL优先", "DHL经济", "捷克邮政", "中德快件"],
+      con_logistics: ["奶粉专线", "杂货包税", "DHL优先", "DHL经济", "捷克邮政", "中德快件"],
       con_payment_step: 9,
       con_payment: ["支付成功", "支付中", "需要补款"],
       con_parcel_status_step: 12,

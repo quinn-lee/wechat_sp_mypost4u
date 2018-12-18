@@ -103,9 +103,9 @@ function productCondition(parcel_h,i){
     if (parcel_h.product == "奶粉专线" || parcel_h.product == "NFZX" || parcel_h.product == "小包奶粉专线")
       return false;
   }
-  //物流产品-阳光包税
+  //物流产品-阳光包税/杂货
   else if (i == 4) {
-    if (parcel_h.product == "阳光包税专线")
+    if (parcel_h.product == "阳光包税专线" || parcel_h.product == "杂货包税专线")
       return false;
   }
   //物流产品-DHL优先
