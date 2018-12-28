@@ -34,7 +34,7 @@ Page({
       date: util_time.dateFtt("yyyy-MM-dd", new Date()),
       rate: ""
     },
-    products_type: ["奶粉专线(普通)", "奶粉专线(白金)", "奶粉专线(至尊)", "小包奶粉(普通)", "小包奶粉(白金)", "小包奶粉(至尊)", "杂货包税专线", "食品保健品专线", "E特快", "DHL优先包", "DHL经济包"],
+    products_type: ["奶粉专线(普通)", "奶粉专线(白金)", "奶粉专线(至尊)", "小包奶粉(普通)", "小包奶粉(白金)", "小包奶粉(至尊)", "杂货包税专线", "小包食品保健品", "E特快", "DHL优先包", "DHL经济包"],
     products_remark: [],
     products_info:[
       { product_name: "奶粉专线(普通)", origin_price: "-", price: "-", tax_info: "包税", currency: "", remark: false },
@@ -44,7 +44,7 @@ Page({
       { product_name: "小包奶粉(白金)", origin_price: "-", price: "-", tax_info: "包税", currency: "", remark: false },
       { product_name: "小包奶粉(至尊)", origin_price: "-", price: "-", tax_info: "包税", currency: "", remark: false },
       { product_name: "杂货包税专线", origin_price: "-", price: "-", tax_info: "按商品计税", currency: "", remark: false },
-      { product_name: "食品保健品专线", origin_price: "-", price: "-", tax_info: "按商品计税", currency: "", remark: false },    
+      { product_name: "小包食品保健品", origin_price: "-", price: "-", tax_info: "按商品计税", currency: "", remark: false },    
       { product_name: "E特快", origin_price: "-", price: "-", tax_info: "包税", currency: "", remark: false },
       // { product_name: "CZ-EMS", origin_price: "-", price: "-", tax_info: "海关抽检", currency: "", remark: false },
       { product_name: "DHL优先包", origin_price: "-", price: "-", tax_info: "海关抽检", currency: "", remark: false },
