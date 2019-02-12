@@ -11,7 +11,7 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "EuropeTime",
     "navigationBarTextStyle": "black",
-    "onReachBottomDistance": "50px",
+    "onReachBottomDistance": 50,
     "enablePullDownRefresh": true
   }
 }
