@@ -35,16 +35,16 @@ Page({
       to_top_image_src: "../../resources/to_top.png",
     },
     sm_display:{
-      btn_disabled: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      btn_disabled: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
       con_date_step: 0,
       con_date: ["三天内", "一周内", "一月内"],
       con_logistics_step: 3,
-      con_logistics: ["奶粉专线", "杂货包税", "DHL优先", "DHL经济", "捷克邮政", "中德快件"],
-      con_payment_step: 9,
+      con_logistics: ["奶粉专线", "杂货包税", "DHL优先", "DHL经济", "捷克邮政", "中德快件","小包奶粉","食品保健品"],
+      con_payment_step: 11,
       con_payment: ["支付成功", "支付中", "需要补款"],
-      con_parcel_status_step: 12,
+      con_parcel_status_step: 14,
       con_parcel_status: ["被拦截", "已取消", "申请取消"],
-      con_rcpt_country_step: 15,
+      con_rcpt_country_step: 17,
       con_rcpt_country: ["中国","德国","其他"]
     },
     search_display:{

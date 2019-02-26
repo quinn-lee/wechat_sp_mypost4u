@@ -8,19 +8,19 @@ function chooseBtn(btn_dis_array, i){
   var change_value = 1 - btn_dis_array[i]
 
   if (i >= 0 && i <= 2) {
-    btn_dis_array.splice(0,3,0,0,0)
+    btn_dis_array.splice(0, 3, 0, 0, 0)
   }
-  else if (i >= 3 && i <= 8) {
-    btn_dis_array.splice(3, 6, 0, 0, 0, 0, 0, 0)
+  else if (i >= 3 && i <= 10) {
+    btn_dis_array.splice(3, 8, 0, 0, 0, 0, 0, 0, 0, 0)
   }
-  else if (i >= 9 && i <= 11) {  //支付状态
-    btn_dis_array.splice(9, 3, 0, 0, 0)
+  else if (i >= 11 && i <= 13) {  //支付状态
+    btn_dis_array.splice(11, 3, 0, 0, 0)
   }
-  else if (i >= 12 && i <= 14) {
-    btn_dis_array.splice(12, 3, 0, 0, 0)
+  else if (i >= 14 && i <= 16) {
+    btn_dis_array.splice(14, 3, 0, 0, 0)
   }
-  else if (i >= 15 && i <= 17) {
-    btn_dis_array.splice(15, 3, 0, 0, 0)
+  else if (i >= 17 && i <= 19) {
+    btn_dis_array.splice(17, 3, 0, 0, 0)
   }
 
   btn_dis_array[i] = change_value
@@ -55,16 +55,16 @@ function conditionParcel(parcel_h,i){
   if(i>=0 && i<=2){
     return timeCondition(parcel_h,i)
   }
-  else if(i>=3 && i<=8){
+  else if(i>=3 && i<=10){
     return productCondition(parcel_h,i)
   }
-  else if(i>=9 && i<=11){  //支付状态
+  else if(i>=11 && i<=13){  //支付状态
     return payStatusCondition(parcel_h,i)
   }
-  else if(i>=12 && i<=14){
+  else if(i>=14 && i<=16){
     return statusCondition(parcel_h, i)
   }
-  else if(i>=15 && i<=17){
+  else if(i>=17 && i<=19){
     return rcptCountryCondition(parcel_h, i)
   }
 
@@ -128,23 +128,31 @@ function productCondition(parcel_h,i){
     if (parcel_h.product == "快益中德快件")
       return false;
   }
+  else if (i == 9) {
+    if (parcel_h.product == "小包奶粉专线")
+      return false;
+  }
+  else if (i == 10) {
+    if (parcel_h.product == "小包食品保健品专线")
+      return false;
+  }
 
   return true;
 }
 
 function payStatusCondition(parcel_h,i){
   //支付状态-支付成功
-  if (i == 9) {
+  if (i == 11) {
     if (parcel_h.payStatus == "已支付" || parcel_h.payStatus == "已补款")
       return false;
   }
   //支付状态-支付失败
-  else if (i == 10) {
+  else if (i == 12) {
     if (parcel_h.payStatus == "支付中" || parcel_h.payStatus == "未支付")
       return false;
   }
   //支付状态-需要补款
-  else if (i == 11) {
+  else if (i == 13) {
     if (parcel_h.payStatus == "需补款")
       return false;
   }
@@ -155,17 +163,17 @@ function payStatusCondition(parcel_h,i){
 
 function statusCondition(parcel_h, i) {
   //包裹状态-被拦截
-  if (i == 12) {
+  if (i == 14) {
     if (parcel_h.payStatus == "被拦截")
       return false;
   }
   //包裹状态-已取消
-  else if (i == 13) {
+  else if (i == 15) {
     if (parcel_h.payStatus == "已取消") 
       return false;
   }
   //包裹状态-申请取消
-  else if (i == 14) {
+  else if (i == 16) {
     if (parcel_h.payStatus == "申请取消")
       return false;
   }
@@ -177,17 +185,17 @@ function statusCondition(parcel_h, i) {
 
 function rcptCountryCondition(parcel_h, i) {
   //国家-中国
-  if (i == 15) {
+  if (i == 17) {
     if (parcel_h.rcptCountry == "cn")
       return false;
   }
   //国家-德国
-  else if (i == 16) {
+  else if (i == 18) {
     if (parcel_h.rcptCountry == "de")
       return false;
   }
   //国家-其他
-  else if (i == 17) {
+  else if (i == 19) {
     if (parcel_h.rcptCountry != "cn" && parcel_h.rcptCountry!="de")
       return false;
   }
