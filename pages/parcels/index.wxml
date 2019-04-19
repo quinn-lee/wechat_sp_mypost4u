@@ -76,7 +76,7 @@
         <text class="parcel_text_desc" data-id="{{index}}" catchtap="catchFollowTap" data-follow="{{item.isFollow}}" data-pnum="{{item.parcelNum}}">关注</text>
         <block wx:if="{{item.hasFile}}">
           <image class="download_image" catchtap="catchDownloadTap" data-pnum="{{item.parcelNum}}" data-can="{{item.hasFile}}" src="{{page_display.download_image_src}}" mode='aspectFit'></image>
-          <text class="parcel_text_desc" catchtap="catchDownloadTap" data-pnum="{{item.parcelNum}}" data-can="{{item.hasFile}}">下载包裹单</text>
+          <text class="parcel_text_desc" catchtap="catchDownloadTap" data-pnum="{{item.parcelNum}}" data-can="{{item.hasFile}}" data-pid="{{item.pid}}">下载包裹单</text>
         </block>
       </view>
     </view>

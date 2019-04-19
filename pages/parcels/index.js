@@ -298,9 +298,10 @@ Page({
     }
 
     var parcel_num = e.target.dataset.pnum
+    var pid = e.target.dataset.pid
     
     // util_interface.download(app.globalData, "shpmt_file", parcel_num)
-    util_interface.downloadOpen(app.globalData, "posting_file", parcel_num)
+    util_interface.downloadOpen(app.globalData, "posting_file", parcel_num, pid)
   },
 
   /**

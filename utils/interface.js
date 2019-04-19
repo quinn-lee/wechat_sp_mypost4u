@@ -2,7 +2,7 @@ const util_handle = require('handle.js');
 const util_time = require('time.js');
 
 function getWebDomain(env){
-  return env == "production" ? "https://www.europe-time.cn" : "https://www.world-paket.de:444";
+  return env == "production" ? "https://www.europe-time.cn" : "http://wechat.europe-time.cn";
 }
 
 
@@ -211,9 +211,9 @@ function download(global_info, type, id){
 
 /**
  * download  后台统一提供一个地址进行下载
- *  根据type区分下载文件类型,id为要下载的唯一标志
+ *  根据type区分下载文件类型,id为要下载的唯一标志(包裹号), pid为表的ID
  */
-function downloadOpen(global_info, type, id) {
+function downloadOpen(global_info, type, id, pid) {
   var show_flag=0
   wx.showLoading({
     title: "文件下载中",
@@ -222,7 +222,7 @@ function downloadOpen(global_info, type, id) {
   show_flag += 1
 
   var url = getWebDomain(global_info.env)
-  url += "/wechat/s_program/download?type=" + type + "&id=" + id
+  url += "/wechat/s_program/download?type=" + type + "&id=" + id + "&pid="+pid
   console.log(url)
 
   wx.downloadFile({
